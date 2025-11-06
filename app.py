@@ -43,7 +43,8 @@ if uploaded_file:
         with col3:
             if st.button("strip (remove spaces)"):
                 st.session_state.edited_text = strip_spaces(st.session_state.edited_text)
-        
+                
+        st.markdown("**Count**")
         substring = st.text_input("Count substring occurrences", key="count")
         if st.button("Count"):
             count = count_substring(st.session_state.edited_text, substring)
