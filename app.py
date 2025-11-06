@@ -27,24 +27,22 @@ if uploaded_file:
 
         # --- String operations ---
         st.markdown("### String Operations")
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3 = st.columns(3)
 
         with col1:
             if st.button("UPPERCASE"):
                 st.session_state.edited_text = to_upper(st.session_state.edited_text)
-            
+            st.markdown("**Replace Text**")
+            old = st.text_input("Old text", key="old")
+            new = st.text_input("New text", key="new")
+            if st.button("Replace"):
+                st.session_state.edited_text = replace_text(st.session_state.edited_text, old, new)
         with col2:
             if st.button("lowercase"):
                 st.session_state.edited_text = to_lower(st.session_state.edited_text)
         with col3:
             if st.button("strip (remove spaces)"):
                 st.session_state.edited_text = strip_spaces(st.session_state.edited_text)
-        with col4:
-            st.markdown("**Replace Text**")
-            old = st.text_input("Old text", key="old")
-            new = st.text_input("New text", key="new")
-            if st.button("Replace"):
-                st.session_state.edited_text = replace_text(st.session_state.edited_text, old, new)
         
         substring = st.text_input("Count substring occurrences", key="count")
         if st.button("Count"):
